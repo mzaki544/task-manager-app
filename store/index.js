@@ -16,15 +16,15 @@ export const mutations = {
 
 export const actions = {
     async fetchTasks({commit}){
-        const response = await this.$axios.$get("http://localhost:8080/tasks");
+        const response = await this.$axios.$get(`${process.env.baseUrl}/tasks`);
         commit("setTasks", response)
       },
       async addTask({commit}, task){
-        const response = await this.$axios.$post("http://localhost:8080/tasks", task);
+        const response = await this.$axios.$post(`${process.env.baseUrl}/tasks`, task);
         commit("setAddTask", response)
       },
       async updateTaskStatus({commit}, task){
-        const response = await this.$axios.$put(`http://localhost:8080/tasks/${task.id}`, task);
+        const response = await this.$axios.$put(`${process.env.baseUrl}/tasks/${task.id}`, task);
         commit("setUpdateTask", response)
       }
 }
